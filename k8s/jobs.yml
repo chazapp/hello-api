@@ -17,3 +17,4 @@ spec:
                   key: DB_URI
             - name: FLASK_APP
               value: "/app/hello/app.py"
+      restartPolicy: Never
