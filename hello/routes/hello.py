@@ -3,7 +3,7 @@ from datetime import datetime, date
 from flask import Blueprint, jsonify, request, Response
 from hello.models.users import User
 from wtforms import Form, DateField, ValidationError
-
+from wtforms.validators import DataRequired
 from hello.db import db
 
 wtforms_json.init()
@@ -13,7 +13,7 @@ This Blueprint exposes the business logic of the Hello Application
 """
 
 class BirthdayForm(Form):
-    birthday = DateField(format="%Y-%m-%d")
+    birthday = DateField("Birthday", [DataRequired()], format="%Y-%m-%d")
 
     def validate_birthday(form, field):
         now = date.today()
@@ -32,6 +32,8 @@ def get_days_until_birthday(birthday: date) -> int:
 
 @bp.route("/hello/<username>", methods=["PUT"])
 def save_user_dob(username: str) -> Response:
+    if not username.isalpha():
+        return jsonify({})
     form = BirthdayForm.from_json(request.get_json())
     if form.validate():
         user = User.query.filter_by(username=username).first()
