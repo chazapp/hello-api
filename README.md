@@ -15,7 +15,7 @@ GET /metrics
 ```
 
 An Insomnia Requests collection and OpenAPI design document is available in this
-repository. Checkout the collection using the [Insomnia REST client](https://insomnia.rest/).
+repository. Check out the collection using the [Insomnia REST client](https://insomnia.rest/).
 
 ## Usage
 
@@ -28,28 +28,28 @@ Clone the repository, create a virtualenv and install the dependencies:
 ```
 $ git clone git@github.com:/chazapp/hello-api && cd hello-api
 $ python -m virtualenv .venv && source .venv/bin/activate
-$ pip install -r requirements.txt
+(.venv)$ pip install -r requirements.txt
 ```
 
 Provide the database connection URI as an environment variable, using a `.env` file:
 
 ```
-$ echo "DB_URI=sqlite:///db.sqlite" >> .env
+(.venv)$ echo "DB_URI=sqlite:///db.sqlite" >> .env
 ```
 
 Migrate your database to the latest schema:
 
 ```
-$ FLASK_APP=hello/app flask db upgrade
+(.venv)$ FLASK_APP=hello/app flask db upgrade
 ```
 
 Should you introduce changes to the database schema, create a migration script
 and commit it to this repository:
 
 ```
-$ FLASK_APP=hello/app flask db migrate
-$ git add hello/migrations
-$ ...
+(.venv)$ FLASK_APP=hello/app flask db migrate
+(.venv)$ git add migrations/
+(.venv)$ ...
 ```
 
 Run the application:
@@ -73,4 +73,4 @@ Provide the `DB_URI` database connection string as an environment variable in
 your container orchestration engine of choice, then expose port 8000 to access
 the API. 
   
-A Kubernetes `kustomize` package is available in this repository's `k8s/` directory.
+A Kubernetes `kustomize` deployment package is available in this repository's `k8s/` directory.
