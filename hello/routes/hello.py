@@ -33,7 +33,7 @@ def get_days_until_birthday(birthday: date) -> int:
 @bp.route("/hello/<username>", methods=["PUT"])
 def save_user_dob(username: str) -> Response:
     if not username.isalpha():
-        return jsonify({})
+        return jsonify({"message": "username should only contain alphabetic characters"}), 400
     form = BirthdayForm.from_json(request.get_json())
     if form.validate():
         user = User.query.filter_by(username=username).first()
