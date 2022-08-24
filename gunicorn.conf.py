@@ -19,6 +19,6 @@ class RequestPathFilter(logging.Filter):
         return False
 
 def on_starting(server):
-    server.log.access_log.addFilter(RequestPathFilter(path_re=r'^/health/$'))
-    server.log.access_log.addFilter(RequestPathFilter(path_re=r'^/metrics/$'))
+    server.log.access_log.addFilter(RequestPathFilter(path_re=r'^/health$'))
+    server.log.access_log.addFilter(RequestPathFilter(path_re=r'^/metrics$'))
 
