@@ -25,5 +25,7 @@ Provide the Ingress DNS Records.
 Apply this Kustomize directory to your cluster:
 
 ```
-$ kubectl apply -k k8s 
-```
+$ kubectl apply -k k8s/
+```  
+  
+An `Application` ArgoCD CRD is available to automate the deployment procedure.
