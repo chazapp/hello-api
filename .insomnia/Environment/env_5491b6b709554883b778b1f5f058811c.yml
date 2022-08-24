@@ -1,0 +1,14 @@
+_id: env_5491b6b709554883b778b1f5f058811c
+type: Environment
+parentId: env_ffbac25a0eb8ee9c0d8866866555591d4e26b1bb
+modified: 1661367247110
+created: 1661365729888
+name: Production
+data:
+  baseUrl: https://hello.chaz.pro
+dataPropertyOrder:
+  "&":
+    - baseUrl
+color: null
+isPrivate: false
+metaSortKey: 1661365729888

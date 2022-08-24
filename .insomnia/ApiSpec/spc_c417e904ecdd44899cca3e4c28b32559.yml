@@ -1,0 +1,81 @@
+_id: spc_c417e904ecdd44899cca3e4c28b32559
+type: ApiSpec
+parentId: wrk_81b0dc3d6ba447b6899adb6ed9f4676b
+modified: 1661367309838
+created: 1661342330004
+fileName: OpenAPI Spec
+contents: |-
+  openapi: 3.0.0
+  info:
+    description: "OpenAPI Spec for Hello-API by Chazapp"
+    version: 1.1.0
+    title: Hello API
+    contact:
+      email: shad@chaz.pro
+  tags:
+    - name: Hello
+      description: Hello endpoint spec
+    - name: Operations
+      description: Ops endpoints spec
+  paths:
+    /hello/{username}:
+      parameters:
+          - in: path
+            name: username
+            schema:
+              type: string
+            required: true
+            description: Username
+      put:
+        tags:
+          - Hello
+        summary: Add a new user and its birthday
+        description: ""
+        requestBody:
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  birthday:
+                    type: string
+                    example: "2000-01-01"
+        responses:
+          "204":
+            description: OK
+      get:
+        tags:
+          - Hello
+        summary: "Get user's days before its birthday"
+        description: ""
+        responses:
+          "200":
+            description: OK
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: "Hello, <username>! Your birthday is in N day(s)"
+    /metrics:
+      get:
+        tags:
+          - Operations
+        summary: Get API Prometheus Metrics
+        responses:
+          "200":
+            description: OK
+            content:
+              text/plain:
+                example: 'total_users{job="hello"} 1'
+    /health:
+      get:
+        tags:
+          - Operations
+        summary: Health check endpoint
+        responses:
+          "200":
+            description: OK
+contentType: yaml

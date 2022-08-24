@@ -1,0 +1,21 @@
+_id: req_wrk_81b0dc3d6ba447b6899adb6ed9f4676bec060196
+type: Request
+parentId: fld_wrk_81b0dc3d6ba447b6899adb6ed9f4676ba1fdaa6b
+modified: 1661367219829
+created: 1661367200914
+url: "{{ base_url }}/health"
+name: Health check endpoint
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1661367200914
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
