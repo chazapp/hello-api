@@ -44,6 +44,17 @@ def test_happy_birthday(client):
     json_resp = resp.get_json()
     assert "Happy Birthday !" in json_resp["message"]
 
+def test_birthday_this_year(client):
+    today = date.today()
+    birthday = date(year=today.year-1, month=today.month, day=30)
+    resp = client.put("/hello/test", json={
+        "birthday": f"{birthday.isoformat()}"
+    })
+    assert resp.status_code == 204
+    resp = client.get("/hello/test")
+    assert resp.status_code == 200
+    
+
 def test_unknown_birthday(client):
     resp = client.get("/hello/test")
     assert resp.status_code == 404
