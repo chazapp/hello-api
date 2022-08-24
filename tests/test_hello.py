@@ -65,3 +65,14 @@ def test_metrics(client):
 def test_healthcheck(client):
     resp = client.get("/health")
     assert resp.status_code == 200
+
+
+def test_form_validation(client):
+    resp = client.put("/hello/1234", json={
+        "birthday": "1996-03-30",
+    })
+    assert resp.status_code == 400
+    resp = client.put("/hello/test", json={
+        "birthday": "test_bad_birthday"
+    })
+    assert resp.status_code == 400
