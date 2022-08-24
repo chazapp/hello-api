@@ -1,8 +1,18 @@
-# hello
+# Hello API
 
 !insert build + coverage badges here
 
 A Flask API that says Hello and wishes an Happy Birthday.
+
+Currently available methods:
+
+```
+GET /hello/<username>
+PUT /hello/<username>
+GET /health
+GET /metrics
+```
+
 
 ## Usage
 
@@ -39,14 +49,22 @@ $ git add hello/migrations
 $ ...
 ```
 
+Run the application:
+```
+$ FLASK_APP=hello/app.py flask run
+```
+
+Run the test suite:
+
+```
+$ pytest
+```
+
 ### Production
 
 This repository provides a Dockerfile that runs the application in Gunicorn
-for production purposes.
+for production purposes. The production system should use a Postgres > v14 database.  
+
 Provide the `DB_URI` database connection string as an environment variable in
 your container orchestration engine of choice, then expose port 8000 to access
 the API. 
-
-
-
-
