@@ -21,7 +21,7 @@ def client(app):
     return app.test_client()
 
 
-def test_birthday_hello(client):
+def test_update_birthday(client):
     resp = client.put("/hello/test", json={
         "birthday": "1996-03-30",
     })
@@ -33,6 +33,22 @@ def test_birthday_hello(client):
     resp = client.get("/hello/test")
     assert resp.status_code == 200
 
+def test_happy_birthday(client):
+    today = date.today()
+    resp = client.put("/hello/test", json={
+        "birthday": f"{today.isoformat()}"
+    })
+    assert resp.status_code == 204
+    resp = client.get("/hello/test")
+    assert resp.status_code == 200
+    json_resp = resp.get_json()
+    assert "Happy Birthday !" in json_resp["message"]
+
+def test_unknown_birthday(client):
+    resp = client.get("/hello/test")
+    assert resp.status_code == 404
+    json_resp = resp.get_json()
+    assert "We don't know your birthday yet." in json_resp["message"]
 
 def test_birthday_in_future(client):
     today = date.today()
@@ -44,4 +60,8 @@ def test_birthday_in_future(client):
 
 def test_metrics(client):
     resp = client.get("/metrics")
+    assert resp.status_code == 200
+
+def test_healthcheck(client):
+    resp = client.get("/health")
     assert resp.status_code == 200
