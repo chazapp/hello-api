@@ -1,6 +1,7 @@
 # Hello API
 
-!insert build + coverage badges here
+![Test workflow](https://github.com/chazapp/hello-api/actions/workflows/tests.yml/badge.svg)
+[![codecov](https://codecov.io/gh/chazapp/hello-api/branch/master/graph/badge.svg?token=R8F37BGZZM)](https://codecov.io/gh/chazapp/hello-api)
 
 A Flask API that says Hello and wishes an Happy Birthday.
 
