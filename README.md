@@ -15,7 +15,7 @@ GET /metrics
 ```
 
 An Insomnia Requests collection and OpenAPI design document is available in this
-repository. Checkout the collection using the Insomnia REST client.
+repository. Checkout the collection using the [Insomnia REST client](https://insomnia.rest/).
 
 ## Usage
 
