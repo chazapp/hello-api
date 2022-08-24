@@ -1,0 +1,21 @@
+_id: req_wrk_81b0dc3d6ba447b6899adb6ed9f4676ba5a758ce
+type: Request
+parentId: fld_wrk_81b0dc3d6ba447b6899adb6ed9f4676ba1fdaa6b
+modified: 1661367301286
+created: 1661367049295
+url: "{{ base_url }}/metrics"
+name: Get API Prometheus Metrics
+description: ""
+method: GET
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1661367049295
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

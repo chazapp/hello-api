@@ -1,0 +1,29 @@
+_id: req_wrk_81b0dc3d6ba447b6899adb6ed9f4676b93e33d2d
+type: Request
+parentId: fld_wrk_81b0dc3d6ba447b6899adb6ed9f4676bf7ff9e8b
+modified: 1661367304626
+created: 1661367049298
+url: "{{ base_url }}/hello/{{ username }}"
+name: Add a new user and its birthday
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "birthday": "2000-01-01"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_a4bd0274cc644b1faa70ce0b56dd9897
+authentication: {}
+metaSortKey: -1661367049298
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
