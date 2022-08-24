@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: hello-api
-          image: ghcr.io/chazapp/hello-api:1.0.2
+          image: ghcr.io/chazapp/hello-api:1.1.0
           imagePullPolicy: Always
           resources:
             requests:
