@@ -4,6 +4,8 @@ kind: Service
 metadata:
   namespace: hello
   name: hello-api-service
+  annotations:
+    prometheus.io/scrape: 'true'
 spec:
   type: NodePort
   selector:
@@ -12,7 +14,6 @@ spec:
     - protocol: TCP
       port: 80
       targetPort: 8000
-
 
 ---
 apiVersion: v1
