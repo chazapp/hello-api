@@ -1,0 +1,104 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: hello
+  name: hello-api-dep
+  labels:
+    app: hello-api
+spec:
+  selector:
+    matchLabels:
+      app: hello-api
+  template:
+    metadata:
+      labels:
+        app: hello-api
+    spec:
+      containers:
+        - name: hello-api
+          image: ghcr.io/chazapp/hello-api:1.0.0
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 8000
+          livenessProbe:
+            timeoutSeconds: 5
+            httpGet:
+              path: /health
+              port: 8000
+              scheme: HTTP
+          env:
+            - name: DB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: hello-secret
+                  key: DB_URI
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-db-dep
+  namespace: hello
+  labels:
+    app: hello-db
+spec:
+  selector:
+    matchLabels:
+      app: hello-db
+  template:
+    metadata:
+      labels:
+        app: hello-db
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:14.0-alpine
+
+          imagePullPolicy: Always
+          resources:
+            requests:
+              memory: "1024Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 5432
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 2
+            periodSeconds: 2
+            timeoutSeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: 5432
+            initialDelaySeconds: 2
+            periodSeconds: 2
+            timeoutSeconds: 5
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: hello-secret
+                  key: DB_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: hello-secret
+                  key: DB_PASSWORD
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: hello-secret
+                  key: DB_NAME
+          volumeMounts:
+            - name: hello-db-data
+              mountPath: /var/lib/postgresql/data
+              subPath: postgres
+      volumes:
+        - name: hello-db-data
+          persistentVolumeClaim:
+            claimName: hello-db-pvc
