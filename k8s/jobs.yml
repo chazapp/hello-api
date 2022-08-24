@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: migration-job
+spec:
+  template:
+    spec:
+      containers:
+        - name: migrations
+          image: ghcr.io/chazapp/hello-api:1.0.2
+          command: ["flask", "db", "upgrade"]
+          env:
+            - name: DB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: hello-secret
+                  key: DB_URI
+            - name: FLASK_APP
+              value: "/app/hello/app.py"
