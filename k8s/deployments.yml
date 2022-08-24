@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: hello-api
-          image: ghcr.io/chazapp/hello-api:1.0.0
+          image: ghcr.io/chazapp/hello-api:1.0.2
           imagePullPolicy: Always
           resources:
             requests:
@@ -102,3 +102,4 @@ spec:
         - name: hello-db-data
           persistentVolumeClaim:
             claimName: hello-db-pvc
+    
