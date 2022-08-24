@@ -8,6 +8,10 @@ from hello.db import db
 
 wtforms_json.init()
 
+"""
+This Blueprint exposes the business logic of the Hello Application
+"""
+
 class BirthdayForm(Form):
     birthday = DateField(format="%Y-%m-%d")
 
@@ -52,5 +56,7 @@ def say_hello(username) -> Response:
         else:
             return jsonify({"message": f"Hello {username} ! Your birthday is in {get_days_until_birthday(user.birthday)} day(s)"}), 200
     else:
-        return jsonify({"message": f"Hello {username} ! We don't have your birthday on file yet."}), 404
+        return jsonify({"message": f"Hello {username} ! We don't know your birthday yet."}), 404
+
+
 
