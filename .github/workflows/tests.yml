@@ -14,7 +14,7 @@ jobs:
           pip install -r requirements.txt
       - name: Run tests
         run: |
-          coverage run --source='./incidents' -m pytest
+          coverage run --source='./hello' -m pytest
       - name: Generate coverage report
         run: |
           coverage report -m --fail-under=80
