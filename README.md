@@ -9,7 +9,7 @@ Currently available methods:
 
 ```
 GET /hello/<username>
-PUT /hello/<username>
+PUT /hello/<username> + {"birthday": "YYYY-MM-DD"}
 GET /health
 GET /metrics
 ```
