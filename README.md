@@ -65,7 +65,10 @@ $ pytest
 
 This repository provides a Dockerfile that runs the application in Gunicorn
 for production purposes. The production system should use a Postgres > v14 database.  
+The Docker container is freely available at `ghcr.io/chazapp/hello-api:<release>`.  
 
 Provide the `DB_URI` database connection string as an environment variable in
 your container orchestration engine of choice, then expose port 8000 to access
 the API. 
+  
+A Kubernetes `kustomize` package is available in this repository's `k8s/` directory.

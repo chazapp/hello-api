@@ -36,4 +36,4 @@ An `Application` ArgoCD CRD is available to automate the deployment procedure.
   
 ## System Overview Diagram  
   
-[!SystemDiagram](./Diagram.png)
+![System Diagram](./Diagram.png)
