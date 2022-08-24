@@ -1,4 +1,4 @@
-FROM python:alpine3.11
+FROM python:3.11-alpine
 EXPOSE 8000
 RUN apk update
 RUN apk add libpq-dev build-base
